@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dn22jysuvbbdf" path="res://assets/images/istockphoto-1390352280-612x612.jpg" id="1_xoo1l"]
 [ext_resource type="Texture2D" uid="uid://oh5anap6dnot" path="res://assets/images/istockphoto-1390352280-612x612_specular(1).png" id="2_8t0ot"]
-[ext_resource type="PackedScene" path="res://scenes/Walls.tscn" id="3_whntf"]
+[ext_resource type="PackedScene" uid="uid://dxb7bg1p06wa8" path="res://scenes/Walls.tscn" id="3_whntf"]
 [ext_resource type="PackedScene" uid="uid://qv7ayncd6sh2" path="res://Models/Decrations/rocks_tall.tscn" id="4_w881m"]
 [ext_resource type="PackedScene" uid="uid://dbhnhwkj771dv" path="res://Models/Decrations/rocks.tscn" id="5_w6vqs"]
 [ext_resource type="MeshLibrary" uid="uid://d3pwu585ltda6" path="res://libary.tres" id="6_w6vqs"]
@@ -52,6 +52,12 @@ is_hemisphere = true
 [sub_resource type="Curve" id="Curve_xoo1l"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13375796, 0.84269667), 0.0, 0.0, 0, 0, Vector2(0.3312102, 0.15730345), 0.0, 0.0, 0, 0, Vector2(0.522293, 0.46067423), 0.0, 0.0, 0, 0, Vector2(0.7133758, 0.011235952), 0.0, 0.0, 0, 0, Vector2(0.84076434, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 7
+point_1/position = Vector2(0.13375796, 0.84269667)
+point_2/position = Vector2(0.3312102, 0.15730345)
+point_3/position = Vector2(0.522293, 0.46067423)
+point_4/position = Vector2(0.7133758, 0.011235952)
+point_5/position = Vector2(0.84076434, 1)
+point_6/position = Vector2(1, 0)
 
 [sub_resource type="CurveTexture" id="CurveTexture_t4cci"]
 curve = SubResource("Curve_xoo1l")
@@ -236,22 +242,22 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.94803417, 2.7122629, -17.9
 operation = 2
 size = Vector3(1.1262207, 1.0412598, 1)
 
-[node name="chair-cushion2" parent="." unique_id=1474049188 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion2" parent="." unique_id=1599099726 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -17.182484, 40.052013, 6.4894414)
 
-[node name="chair-cushion3" parent="." unique_id=1162335973 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion3" parent="." unique_id=1960009244 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -17.182484, 40.052013, 5.2360187)
 
-[node name="chair-cushion4" parent="." unique_id=897979166 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion4" parent="." unique_id=936253542 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -21.007889, 40.052013, 6.4894414)
 
-[node name="chair-cushion5" parent="." unique_id=1744318121 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion5" parent="." unique_id=1632979920 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -21.007889, 40.052013, 5.2360187)
 
-[node name="chair-cushion6" parent="." unique_id=1268655066 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion6" parent="." unique_id=1246145001 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -25.282711, 40.052013, 6.4894414)
 
-[node name="chair-cushion7" parent="." unique_id=448127645 instance=ExtResource("12_ewrro")]
+[node name="chair-cushion7" parent="." unique_id=2093937947 instance=ExtResource("12_ewrro")]
 transform = Transform3D(-1.09278474e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278474e-07, -25.282711, 40.052013, 5.2360187)
 
 [node name="ItemSpawner" type="Node3D" parent="." unique_id=1988371560]
@@ -262,11 +268,11 @@ spawn_points = Array[Vector3]([Vector3(-20, 0.2, -30), Vector3(-15, 0.2, 15), Ve
 [node name="spawnHouse" parent="." unique_id=278982772 instance=ExtResource("15_omvro")]
 transform = Transform3D(-2.6452477, 0, 3.0004442, 0, 4, 0, -3.0004442, 0, -2.6452477, 36.95573, 0.18689156, 25.715477)
 
-[node name="spawnHouse2" parent="." unique_id=439680733 instance=ExtResource("15_omvro")]
+[node name="spawnHouse2" parent="." unique_id=957849980 instance=ExtResource("15_omvro")]
 transform = Transform3D(2.1726978, 0, 3.3584795, 0, 4, 0, -3.3584795, 0, 2.1726978, -28.737192, 0.18689156, 28.160702)
 
-[node name="spawnHouse3" parent="." unique_id=1978206856 instance=ExtResource("15_omvro")]
+[node name="spawnHouse3" parent="." unique_id=863776355 instance=ExtResource("15_omvro")]
 transform = Transform3D(3.6847415, 0, -1.5564958, 0, 4, 0, 1.5564958, 0, 3.6847415, -31.139917, 0.18689156, -23.23009)
 
-[node name="spawnHouse4" parent="." unique_id=1811411445 instance=ExtResource("15_omvro")]
+[node name="spawnHouse4" parent="." unique_id=192886739 instance=ExtResource("15_omvro")]
 transform = Transform3D(-3.604308, 0, -1.7346362, 0, 4, 0, 1.7346362, 0, -3.604308, 39.509605, 0.18689156, -48.293846)
