@@ -23,19 +23,10 @@ func pick_up(player_id: int) -> bool:
 	if is_picked_up:
 		print("[Item] Already picked up, rejecting pickup")
 		return false
-
 	is_picked_up = true
-	print("[Item] Picked up by player: ", player_id)
-
 	pill.visible = false
 	collision_shape.disabled = true
 	area_3d.monitoring = false
-	## Keep the item in the scene but invisible and non-interactable
-	## This way it stays synced across the network
-	print("[Item] Pickup synced - item hidden for all clients (main)")
-
-	# Sync pickup across network to ALL clients
-	# Use rpc() with "call_local" to execute on everyone immediately
 	rpc("item_picked_up")
 	return true
 
@@ -45,20 +36,10 @@ func item_picked_up() -> void:
 	if is_picked_up:
 		print("[Item] Already picked up, rejecting pickup")
 		return 
-	
 	is_picked_up = true
-	#print("[Item] Picked up by player: ", player_id)
-	
 	pill.visible = false
 	collision_shape.disabled = true
 	area_3d.monitoring = false
-	## Keep the item in the scene but invisible and non-interactable
-	## This way it stays synced across the network
-	print("[Item] Pickup synced - item hidden for all clients (rpc)")
-	
-	# Sync pickup across network to ALL clients
-	# Use rpc() with "call_local" to execute on everyone immediately
-	#rpc("_on_item_picked_up", player_id)
 	return
 
 

@@ -190,7 +190,8 @@ func _physics_process(delta):
 func perform_shooting_logic():
 	if raycast.is_colliding():
 		var hit_player = raycast.get_collider()
-		hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+		#hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+		hit_player.request_damage.rpc_id(1)
 	
 	if enemy_raycast.is_colliding():
 		enemy_raycast.get_collider().damage_taken += damage
@@ -252,18 +253,16 @@ func play_shoot_effects():
 			print("Uzi muzzle flash is null")
 
 
-@rpc("any_peer", "call_local")
-func receive_damage():
-	print("receive_damage() called on player:", name)
-	if is_dead:
-		print("Player is already dead, ignoring damage")
+@rpc("any_peer", "call_remote", "reliable")
+func request_damage() -> void:
+	if not multiplayer.is_server():
 		return
-	health -= damage
-	print("Health reduced to:", health)
-	health_changed.emit(health)
-	print("health_changed signal emitted with value:", health)
-	if health <= 0:
-		print("Player dead, calling die()")
+	if is_dead:
+		return
+	# Apply damage on the server.
+	var new_health := maxi(health - damage, 0)
+	_broadcast_health(new_health)
+	if new_health <= 0:
 		is_dead = true
 		rpc("die")
 
@@ -284,8 +283,6 @@ func handle_crouch(delta) -> void:
 
 @rpc("authority", "call_local")
 func die():
-	#if is_dead:
-		#return
 	velocity = Vector3.ZERO
 	set_process(false)
 	set_physics_process(false)
@@ -297,7 +294,7 @@ func die():
 @rpc("call_local", "reliable", "any_peer")
 func flashLight_toggle():
 	flashlight.visible = not flashlight.visible
-	
+
 
 func heal(amount: int) -> bool:
 	if not is_multiplayer_authority():
@@ -338,26 +335,34 @@ func _server_use_health_pack() -> void:
 		return
 	var inventory_node := get_node_or_null("PlayerInventory") as PlayerInventory
 	if inventory_node == null:
+		print("[HealthPack] Inventory not found!")
 		return
+	print("[HealthPack] Server health: ", health, "/", max_health)
 	if health >= max_health:
-		print("Health is already full.")
+		print("[HealthPack] Health is already full.")
 		return
-	if inventory_node.use_health_pack_server(HEALTH_PACK_HEAL_AMOUNT):
-		var new_health := mini(health + HEALTH_PACK_HEAL_AMOUNT, max_health)
-		_broadcast_health(new_health)
-
-
-@rpc("any_peer", "call_local", "reliable")
-func _receive_health_update(new_health: int) -> void:
-	# Only accept health updates sent by the server on remote peers.
-	if not multiplayer.is_server():
-		if multiplayer.get_remote_sender_id() != 1:
-			return
-	health = clampi(new_health, 0, max_health)
-	health_changed.emit(health)
+	# Only consume the item if one exists.
+	if not inventory_node.use_health_pack_server(HEALTH_PACK_HEAL_AMOUNT):
+		print("[HealthPack] No Health Pack in inventory!")
+		return
+	# Calculate the new health on the server.
+	var new_health := mini(health + HEALTH_PACK_HEAL_AMOUNT,max_health)
+	_broadcast_health(new_health)
+	print("[HealthPack] Used successfully! New health: ",new_health,"/",max_health)
 
 
 func _broadcast_health(new_health: int) -> void:
 	if not multiplayer.is_server():
 		return
 	_receive_health_update.rpc(new_health)
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _receive_health_update(new_health: int) -> void:
+	# Only accept health updates from the server.
+	if not multiplayer.is_server():
+		if multiplayer.get_remote_sender_id() != 1:
+			return
+	health = clampi(new_health, 0, max_health)
+	health_changed.emit(health)
+	print("[Health] Updated: ", health, "/", max_health)

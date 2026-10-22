@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://bcd4rjgekf8jm"]
+
+[ext_resource type="Texture2D" uid="uid://bqlsvnoce0jyt" path="res://Models/kenney_space-station-kit/Models/GLB format/Textures/colormap.png" id="1_1gk80"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdw66"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("1_1gk80")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ng0y7"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.35, 1, 0.15, 0.7),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAwAEAAIABQACAAQAAgAFAAAABgAEAAMABAAGAAUAAAAHAAMAAwAHAAYABwAAAAgABQAJAAAACQAIAAAACQAFAAYACAAKAAcACgAIAAkABwAKAAYACQALAAoACgALAAYABgALAAkA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAqaoAAAAA//8AAAAAAAD//6mqAAAAAAAAqaratgAA//+pqtq2AAD//wAA//8AAAAA/////wAAAAD//9q2AAD///////8AAP/////atgAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_if0pd"]
+resource_name = "balcony-floor-center_balcony-floor-center"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.35, 1, 0.15, 0.7),
+"attribute_data": PackedByteArray("/zeY+f83mPn/N3bX/zd21/83Zcb/N2XG/zdlxv83Zcb/N3bX/zeY+f83mPn/N3bX/zdlxv83dtf/N3bX/zdlxv83dtf/N3bX/zd21/83dtf/N3bX/zeY+f83mPn/N3bX/zeY+f83mPn/N5j5/zeY+f83mPn/N5j5/zdlxv83Zcb/V2XG/1dlxv9XZcb/V2XG"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAwAEAAAABAAFAAAABgAHAAgACQAGAAgACgAJAAgACAALAAoADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"material": SubResource("StandardMaterial3D_vdw66"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAAAP///78AAAAAAAD/vwAAqaoAAP+/AACpqtq2/78AAP//2rb/vwAA//////+//////////7//////2rb/v///qaratv+///8AAP///7///wAAAAD/v///qaoAAP+/AAD//9q2//8AAKmq2rb/////qaratv///////9q2/////6mqAAD/////qaratv//AACpqtq2//8AAKmqAAD//wAAqaoAAP//AAAAAAAA/////wAAAAD/////qaoAAP//AAAAAP///7///wAA////v///AAAAAP+/AAAAAAAA/7///wAA//8AgAAAAAD//wCAAAD/////AID///////8AgAAA///atv///////9q2/////////////wAA/////////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//7//f/+//3//v/9//7//f////3////9/////f///AAD/fwAA/38AAP9/AAD/f/9/////f////3////9/////f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ng0y7")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ev0cy"]
+data = PackedVector3Array(-0.5, 0, 0.35, -0.5, 0, -0.35, -0.5, 0.099999994, -0.35, -0.5, 0.099999994, -0.35, -0.5, 0.099999994, 0.14999999, -0.5, 0, 0.35, -0.5, 0.099999994, 0.14999999, -0.5, 0.14999999, 0.14999999, -0.5, 0, 0.35, -0.5, 0.14999999, 0.14999999, -0.5, 0.14999999, 0.35, -0.5, 0, 0.35, 0.5, 0.14999999, 0.35, 0.5, 0.14999999, 0.14999999, 0.5, 0.099999994, 0.14999999, 0.5, 0, 0.35, 0.5, 0.14999999, 0.35, 0.5, 0.099999994, 0.14999999, 0.5, 0, -0.35, 0.5, 0, 0.35, 0.5, 0.099999994, 0.14999999, 0.5, 0.099999994, 0.14999999, 0.5, 0.099999994, -0.35, 0.5, 0, -0.35, -0.5, 0.14999999, 0.14999999, -0.5, 0.099999994, 0.14999999, 0.5, 0.099999994, 0.14999999, 0.5, 0.099999994, 0.14999999, 0.5, 0.14999999, 0.14999999, -0.5, 0.14999999, 0.14999999, 0.5, 0.099999994, -0.35, 0.5, 0.099999994, 0.14999999, -0.5, 0.099999994, 0.14999999, -0.5, 0.099999994, 0.14999999, -0.5, 0.099999994, -0.35, 0.5, 0.099999994, -0.35, -0.5, 0.099999994, -0.35, -0.5, 0, -0.35, 0.5, 0, -0.35, 0.5, 0, -0.35, 0.5, 0.099999994, -0.35, -0.5, 0.099999994, -0.35, -0.5, 0, 0.35, 0.5, 0, 0.35, 0.5, 0, -0.35, 0.5, 0, -0.35, -0.5, 0, -0.35, -0.5, 0, 0.35, 0.5, 0, 0.35, -0.5, 0, 0.35, -0.5, 0.14999999, 0.35, -0.5, 0.14999999, 0.35, 0.5, 0.14999999, 0.35, 0.5, 0, 0.35, -0.5, 0.14999999, 0.14999999, 0.5, 0.14999999, 0.14999999, 0.5, 0.14999999, 0.35, 0.5, 0.14999999, 0.35, -0.5, 0.14999999, 0.35, -0.5, 0.14999999, 0.14999999)
+
+[node name="BalconyCenter" type="Node3D" unique_id=626570834]
+
+[node name="balcony-floor-center" type="MeshInstance3D" parent="." unique_id=1465903245]
+mesh = SubResource("ArrayMesh_if0pd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="balcony-floor-center" unique_id=1032099321]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="balcony-floor-center/StaticBody3D" unique_id=1747870496]
+shape = SubResource("ConcavePolygonShape3D_ev0cy")

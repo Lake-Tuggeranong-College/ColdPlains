@@ -7,14 +7,15 @@ class_name PlayerInventory
 var inventory: Array = []
 var player_id: int
 
+
 func _ready() -> void:
 	player_id = get_parent().name.to_int()
+
 
 func add_item(item: Item) -> bool:
 	if inventory.size() >= inventory_size:
 		print("Inventory is full!")
 		return false
-	
 	# Add item data to inventory
 	var item_data = {
 		"id": item.item_id,
@@ -25,18 +26,21 @@ func add_item(item: Item) -> bool:
 	print("Item added to inventory: ", item.item_name)
 	return true
 
+
 func remove_item(index: int) -> bool:
 	if index < 0 or index >= inventory.size():
 		return false
-	
 	inventory.remove_at(index)
 	return true
+
 
 func get_inventory() -> Array:
 	return inventory
 
+
 func get_inventory_size() -> int:
 	return inventory.size()
+
 
 func clear_inventory() -> void:
 	inventory.clear()
@@ -57,7 +61,7 @@ func use_health_pack(player: Node) -> bool:
 			return false
 	print("No Health Pack in inventory!")
 	return false
-#possibly can be commanded out
+
 
 func use_health_pack_server(heal_amount: int) -> bool:
 	if not multiplayer.is_server():
